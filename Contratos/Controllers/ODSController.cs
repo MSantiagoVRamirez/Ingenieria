@@ -34,13 +34,6 @@ namespace Contratos.Controllers
         public async Task<ActionResult<IEnumerable<Usuario>>> lectura()
         {
             var contrato = await _context.ODS
-                .Include(ods => ods.supervisorODSFk)
-                .Include(ods => ods.solicitanteODSFk)
-                .Include(ods => ods.proyectoODSFk)
-                .Include(ods => ods.proyectoODSFk)
-                .Include(ods => ods.troncalODSFk)
-                .Include(ods => ods.contratoODSFk)
-                .Include(ods => ods.ampliacionConODSFk)
                 .ToListAsync();
 
             return Ok(contrato);
@@ -50,16 +43,7 @@ namespace Contratos.Controllers
         [Route("consultar")]
         public async Task<IActionResult> consultar(int id)
         {
-            ODS oDS = await _context.ODS
-            .Include(ods => ods.supervisorODSFk)
-            .Include(ods => ods.solicitanteODSFk)
-            .Include(ods => ods.proyectoODSFk)
-            .Include(ods => ods.proyectoODSFk)
-            .Include(ods => ods.troncalODSFk)
-            .Include(ods => ods.contratoODSFk)
-            .Include(ods => ods.ampliacionConODSFk)
-
-            .FirstOrDefaultAsync(u => u.id == id);
+            ODS oDS = await _context.ODS .FindAsync(id);
 
             if (oDS == null)
             {

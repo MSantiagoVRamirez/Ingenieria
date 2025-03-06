@@ -9,7 +9,7 @@ namespace Seguridad.Controllers.Seguridad
 {
     [Route("api/[controller]")]
     [ApiController]
-    [ServiceFilter(typeof(PermisoAuthorizationFilter))]
+    //[ServiceFilter(typeof(PermisoAuthorizationFilter))]
     public class TroncalController : ControllerBase
     {
         private readonly IngenieriaContext _context;

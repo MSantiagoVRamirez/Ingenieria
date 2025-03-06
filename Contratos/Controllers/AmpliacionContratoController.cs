@@ -34,7 +34,6 @@ namespace Contratos.Controllers
         public async Task<ActionResult<IEnumerable<AmpliacionContrato>>> lectura()
         {
             var ampliacionContrato = await _context.AmpliacionContrato
-            .Include(am => am.contratoAmpliacionFk)
             .ToListAsync();
 
             return Ok(ampliacionContrato);
@@ -43,9 +42,7 @@ namespace Contratos.Controllers
         [Route("consultar")]
         public async Task<IActionResult> consultar(int id)
         {
-            AmpliacionContrato ampliacionContrato = await _context.AmpliacionContrato
-            .Include(am => am.contratoAmpliacionFk)
-            .FirstOrDefaultAsync(am => am.id == id);
+            AmpliacionContrato ampliacionContrato = await _context.AmpliacionContrato .FindAsync(id);
 
             if (ampliacionContrato == null)
             {

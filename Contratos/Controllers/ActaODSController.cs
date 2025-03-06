@@ -33,9 +33,7 @@ namespace Contratos.Controllers
         [Route("lectura")]
         public async Task<ActionResult<IEnumerable<ActaODS>>> Lectura()
         {
-            var actasODS = await _context.ActaODS
-            .Include(ac => ac.actaOdsFk)
-            .ToListAsync();
+            var actasODS = await _context.ActaODS.ToListAsync();
 
             return Ok(actasODS);
         }
@@ -43,9 +41,7 @@ namespace Contratos.Controllers
         [Route("consultar")]
         public async Task<IActionResult> consultar(int id)
         {
-            ActaODS actasODS = await _context.ActaODS
-            .Include(ac => ac.actaOdsFk)
-            .FirstOrDefaultAsync(ac => ac.id == id);
+            ActaODS actasODS = await _context.ActaODS .FindAsync(id);
 
             if (actasODS == null)
             {

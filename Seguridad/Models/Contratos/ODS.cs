@@ -88,7 +88,7 @@ namespace Seguridad.Models.Contratos
         public Contrato? contratoODSFk { get; set; }
 
         [ForeignKey("AmpliacionContrato")]
-        public int ampliacionContratoId { get; set; }
+        public int? ampliacionContratoId { get; set; }
         public AmpliacionContrato? ampliacionConODSFk { get; set; }
     }
 }

@@ -35,9 +35,6 @@ namespace Contratos.Controllers
         public async Task<ActionResult<IEnumerable<Usuario>>> lectura()
         {
             var contrato = await _context.Contrato
-                .Include(u => u.empresaContratoFk)
-                .Include(u => u.usuarioAsignaConFk)
-                .Include(u => u.usuarioContratistaFk)
                 .ToListAsync();
 
             return Ok(contrato);
@@ -76,11 +73,7 @@ namespace Contratos.Controllers
         [HttpGet("consultar")]
         public async Task<ActionResult<Usuario>> consultar(int id)
         {
-            var contrato = await _context.Contrato
-                .Include(u => u.empresaContratoFk)
-                .Include(u => u.usuarioAsignaConFk)
-                .Include(u => u.usuarioContratistaFk)
-                .FirstOrDefaultAsync(u => u.id == id);
+            var contrato = await _context.Contrato .FindAsync(id);  
 
             if (contrato == null)
             {

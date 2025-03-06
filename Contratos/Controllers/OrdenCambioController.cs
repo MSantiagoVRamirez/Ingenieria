@@ -34,7 +34,6 @@ namespace Contratos.Controllers
         public async Task<ActionResult<IEnumerable<OrdenCambio>>> Lectura()
         {
             var ordenCambio = await _context.OrdenCambio
-            .Include(oc => oc.odsOrdenCamFk)
             .ToListAsync();
 
             return Ok(ordenCambio);
@@ -43,9 +42,7 @@ namespace Contratos.Controllers
         [Route("consultar")]
         public async Task<IActionResult> consultar(int id)
         {
-            OrdenCambio ordenCambio = await _context.OrdenCambio
-            .Include(oc => oc.odsOrdenCamFk)    
-            .FirstOrDefaultAsync(oc => oc.id == id );
+            OrdenCambio ordenCambio = await _context.OrdenCambio.FindAsync(id);
 
             if (ordenCambio == null)
             {
