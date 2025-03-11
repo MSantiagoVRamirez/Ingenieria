@@ -1,0 +1,8 @@
+metronic_react_v8/src/_metronic/assets/sass/layout/_variables.custom.scss
+metronic_react_v8/src/_metronic/assets/sass/core/components/_variables.scss
+metronic_react_v8/src/_metronic/assets/sass/core/components/_variables-dark.scss
+metronic_react_v8/src/_metronic/assets/sass/core/components/_utilities.scss
+
+metronic_react_v8/src/app/routing/PrivateRoutes.tsx
+metronic_react_v8/src/_metronic/layout/components/header/header-menus/MenuInner.tsx
+metronic_react_v8/src/_metronic/layout/components/sidebar/sidebar-menu/SidebarMenuMain.tsx
