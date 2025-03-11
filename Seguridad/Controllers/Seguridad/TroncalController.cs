@@ -39,9 +39,9 @@ namespace Seguridad.Controllers.Seguridad
         }
         [HttpGet]
         [Route("consultar")]
-        public async Task<IActionResult> consultar(int Id)
+        public async Task<IActionResult> consultar(int id)
         {
-            Troncal troncales = await _context.Troncal.FindAsync(Id);
+            Troncal troncales = await _context.Troncal.FindAsync(id);
 
             if (troncales == null)
             {

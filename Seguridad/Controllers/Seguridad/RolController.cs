@@ -26,6 +26,18 @@ namespace Seguridad.Controllers.Seguridad
 
             return Ok(rol);
         }
+        [HttpGet]
+        [Route("consultar")]
+        public async Task<IActionResult> consultar(int id)
+        {
+            Rol roles = await _context.Rol.FindAsync(id);
+
+            if (roles == null)
+            {
+                return NotFound();
+            }
+            return Ok(roles);
+        }
         [HttpPost]
         [Route("insertar")]
 
