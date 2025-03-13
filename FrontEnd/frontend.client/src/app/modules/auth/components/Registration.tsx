@@ -2,7 +2,8 @@ import {useState, useEffect} from 'react'
 import {useFormik} from 'formik'
 import * as Yup from 'yup'
 import clsx from 'clsx'
-import {getUserByToken, register} from '../core/_requests'
+// import {getUserByToken} from '../core/_requests'
+import {register} from '../core/_requests'
 import {Link} from 'react-router-dom'
 import {toAbsoluteUrl} from '../../../../_metronic/helpers'
 import {PasswordMeterComponent} from '../../../../_metronic/assets/ts/components'
@@ -64,12 +65,6 @@ export function Registration() {
       setLoading(true)
       try {
         const {data: auth} = await register(
-          // values.firstname,
-          // values.lastname,
-          // values.email,
-          // values.password,
-          // values.changepassword,
-          // values.acceptTerms,
           values.usuario,
           values.password,
           values.confirmPassword,
@@ -78,18 +73,44 @@ export function Registration() {
           values.correo,
           values.telefono
         )
-        saveAuth(auth)
-        const {data: user} = await getUserByToken(auth.api_token)
-        setCurrentUser(user)
       } catch (error) {
         console.error(error)
-        saveAuth(undefined)
         setStatus('Los detalles de registro son incorrectos')
         setSubmitting(false)
         setLoading(false)
       }
     },
   })
+
+  // export function Registration() {
+  //   const [loading, setLoading] = useState(false)
+  //   const {saveAuth, setCurrentUser} = useAuth()
+  //   const formik = useFormik({
+  //     initialValues,
+  //     validationSchema: registrationSchema,
+  //     onSubmit: async (values, {setStatus, setSubmitting}) => {
+  //       setLoading(true)
+  //       try {
+  //         const {data: auth} = await register(
+  //           values.firstname,
+  //           values.lastname,
+  //           values.email,
+  //           values.password,
+  //           values.changepassword,
+  //           values.acceptTerms
+  //         )
+  //         saveAuth(auth)
+  //         const {data: user} = await getUserByToken(auth.api_token)
+  //         setCurrentUser(user)
+  //       } catch (error) {
+  //         console.error(error)
+  //         saveAuth(undefined)
+  //         setStatus('Los detalles de registro son incorrectos')
+  //         setSubmitting(false)
+  //         setLoading(false)
+  //       }
+  //     },
+  //   })
 
   useEffect(() => {
     PasswordMeterComponent.bootstrap()
@@ -171,7 +192,7 @@ export function Registration() {
       <div className='fv-row mb-8'>
         <label className='form-label fw-bolder text-gray-900 fs-6'>Nombres</label>
         <input
-          placeholder='First name'
+          placeholder='Nombres'
           type='text'
           autoComplete='off'
           {...formik.getFieldProps('nombres')}
@@ -199,7 +220,7 @@ export function Registration() {
       <div className='fv-row mb-8'>
         <label className='form-label fw-bolder text-gray-900 fs-6'>Apellidos</label>
         <input
-          placeholder='Last name'
+          placeholder='Apellidos'
           type='text'
           autoComplete='off'
           {...formik.getFieldProps('apellidos')}
@@ -227,7 +248,7 @@ export function Registration() {
       <div className='fv-row mb-8'>
         <label className='form-label fw-bolder text-gray-900 fs-6'>Correo</label>
         <input
-          placeholder='Email'
+          placeholder='Correo'
           type='email'
           autoComplete='off'
           {...formik.getFieldProps('correo')}
@@ -253,7 +274,7 @@ export function Registration() {
       <div className='fv-row mb-8'>
         <label className='form-label fw-bolder text-gray-900 fs-6'>Teléfono</label>
         <input
-          placeholder='Phone'
+          placeholder='Teléfono'
           type='text'
           autoComplete='off'
           {...formik.getFieldProps('telefono')}
@@ -363,7 +384,7 @@ export function Registration() {
       <div className='fv-row mb-8'>
         <label className='form-label fw-bolder text-gray-900 fs-6'>Usuario</label>
         <input
-          placeholder='Username'
+          placeholder='Usuario'
           type='text'
           autoComplete='off'
           {...formik.getFieldProps('usuario')}
@@ -394,7 +415,7 @@ export function Registration() {
           <div className='position-relative mb-3'>
             <input
               type='password'
-              placeholder='Password'
+              placeholder='Contraseña'
               autoComplete='off'
               {...formik.getFieldProps('password')}
               className={clsx(
@@ -438,7 +459,7 @@ export function Registration() {
         <label className='form-label fw-bolder text-gray-900 fs-6'>Confirmar Contraseña</label>
         <input
           type='password'
-          placeholder='Password confirmation'
+          placeholder='Confirmar Contraseña'
           autoComplete='off'
           {...formik.getFieldProps('changepassword')}
           className={clsx(

@@ -26,6 +26,7 @@ import { TalleresWidget } from '../pages/components/TalleresWidget'
 import { HallazgosWidget } from '../pages/components/HallazgosWidget'
 import { AccionesCierreWidget } from '../pages/components/AccionesCierreWidget'
 import { ContratosGallery } from '../pages/components/ContratosGallery'
+import { Home } from '../pages/components/Home'
 
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
@@ -39,7 +40,9 @@ const PrivateRoutes = () => {
     <Routes>
       <Route element={<MasterLayout />}>
         {/* Redirect to Dashboard after success login/registartion */}
-        <Route path='auth/*' element={<Navigate to='/dashboard' />} />
+        {/* <Route path='auth/*' element={<Navigate to='/dashboard' />} /> */}
+        <Route path='home' element={<Home />} />
+        <Route path='auth/*' element={<Navigate to='/home' />} />
         {/* Pages */}
         <Route path="my-page" element={<MyPage />} />  {/* new page added */}
         <Route path="classes/roles-widget" element={<RolesWidget />} />

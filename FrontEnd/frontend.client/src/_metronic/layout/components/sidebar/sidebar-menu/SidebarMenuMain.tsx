@@ -8,6 +8,18 @@ const SidebarMenuMain = () => {
 
   return (
     <>
+      {/* <SidebarMenuItem
+        to='/dashboard'
+        icon='element-11'
+        title={intl.formatMessage({id: 'MENU.DASHBOARD'})}
+        fontIcon='bi-app-indicator'
+      /> */}
+      <SidebarMenuItem
+        to='/home'
+        icon='element-11'
+        title='home'
+        fontIcon='bi-app-indicator'
+      />
       <SidebarMenuItem to="/my-page" title="My Page" />  {/* new page added */}
       <SidebarMenuItemWithSub to='/classes' title='Classes'>
         <SidebarMenuItem to="classes/roles-widget" title="Roles" />
@@ -31,13 +43,7 @@ const SidebarMenuMain = () => {
       <SidebarMenuItemWithSub to='/gallery' title='Gallery'>
         <SidebarMenuItem to="gallery/contratos-gallery" title="Contratos" />
       </SidebarMenuItemWithSub>
-      <SidebarMenuItem
-        to='/dashboard'
-        icon='element-11'
-        title={intl.formatMessage({id: 'MENU.DASHBOARD'})}
-        fontIcon='bi-app-indicator'
-      />
-      <SidebarMenuItem to='/builder' icon='switch' title='Layout Builder' fontIcon='bi-layers' />
+      {/* <SidebarMenuItem to='/builder' icon='switch' title='Layout Builder' fontIcon='bi-layers' />
       <div className='menu-item'>
         <div className='menu-content pt-8 pb-2'>
           <span className='menu-section text-muted text-uppercase fs-8 ls-1'>Crafted</span>
@@ -136,7 +142,7 @@ const SidebarMenuMain = () => {
           </span>
           <span className='menu-title'>Changelog {import.meta.env.VITE_APP_VERSION}</span>
         </a>
-      </div>
+      </div> */}
     </>
   )
 }

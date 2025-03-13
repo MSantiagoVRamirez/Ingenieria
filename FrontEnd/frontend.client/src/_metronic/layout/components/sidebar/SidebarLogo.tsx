@@ -5,6 +5,8 @@ import {useLayout} from '../../core'
 import {MutableRefObject, useEffect, useRef} from 'react'
 import {ToggleComponent} from '../../../assets/ts/components'
 
+import LogoCenit from '../../../../app/assets/images/LogoCenit.jpg'
+
 type PropsType = {
   sidebarRef: MutableRefObject<HTMLDivElement | null>
 }
@@ -49,31 +51,36 @@ const SidebarLogo = (props: PropsType) => {
 
   return (
     <div className='app-sidebar-logo px-6' id='kt_app_sidebar_logo'>
-      <Link to='/dashboard'>
+      {/* <Link to='/dashboard'> */}
+      <Link to='/home'>
         {config.layoutType === 'dark-sidebar' ? (
           <img
             alt='Logo'
-            src={toAbsoluteUrl('media/logos/default-dark.svg')}
-            className='h-25px app-sidebar-logo-default'
+            // src={toAbsoluteUrl('media/logos/default-dark.svg')}
+            src={LogoCenit}
+            className='h-45px app-sidebar-logo-default'
           />
         ) : (
           <>
             <img
               alt='Logo'
-              src={toAbsoluteUrl('media/logos/default.svg')}
-              className='h-25px app-sidebar-logo-default theme-light-show'
+              // src={toAbsoluteUrl('media/logos/default.svg')}
+              src={LogoCenit}
+              className='h-45px app-sidebar-logo-default theme-light-show'
             />
             <img
               alt='Logo'
-              src={toAbsoluteUrl('media/logos/default-dark.svg')}
-              className='h-25px app-sidebar-logo-default theme-dark-show'
+              // src={toAbsoluteUrl('media/logos/default-dark.svg')}
+              src={LogoCenit}
+              className='h-45px app-sidebar-logo-default theme-dark-show'
             />
           </>
         )}
 
         <img
           alt='Logo'
-          src={toAbsoluteUrl('media/logos/default-small.svg')}
+          // src={toAbsoluteUrl('media/logos/default-small.svg')}
+          src={LogoCenit}
           className='h-20px app-sidebar-logo-minimize'
         />
       </Link>

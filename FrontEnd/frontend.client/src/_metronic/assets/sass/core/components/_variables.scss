@@ -50,17 +50,23 @@ $grays: (
 
 // Bootstrap contextual colors
 // Primary colors
-$primary:						#1B84FF !default;
-$primary-active:				#056EE9 !default;
+$primary:						#C8DE26 !default;
+$primary-active:				#C8DE26 !default;
+$primary-clarity: 				rgba(#C8DE26, 0.2) !default;
+// $primary:						#1B84FF !default;
+// $primary-active:				#056EE9 !default;
+// $primary-clarity: 				rgba(#1B84FF, 0.2) !default;
 $primary-light: 				#E9F3FF !default;
-$primary-clarity: 				rgba(#1B84FF, 0.2) !default;
 $primary-inverse: 				$white !default; 
 
 // Secondary colors
-$secondary: 						$gray-200 !default;
+// $secondary: 					#C8DE26 !default;
+// $secondary-active: 				#C8DE26 !default;
+// $secondary-clarity:				rgba(#C8DE26, 0.2) !default; 
+$secondary: 					$gray-200 !default;
 $secondary-active: 				$gray-400 !default;
-$secondary-light: 				#F9F9F9 !default;
 $secondary-clarity:				rgba(#F9F9F9, 0.2) !default; 
+$secondary-light: 				#F9F9F9 !default;
 $secondary-inverse:				$gray-800 !default; 
 
 // Light colors

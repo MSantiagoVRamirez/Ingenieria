@@ -4,27 +4,30 @@ import * as Yup from 'yup'
 import clsx from 'clsx'
 import {Link} from 'react-router-dom'
 import {useFormik} from 'formik'
-import {getUserByToken, login} from '../core/_requests'
+// import {getUserByToken} from '../core/_requests'
+import {login} from '../core/_requests'
 import {toAbsoluteUrl} from '../../../../_metronic/helpers'
 import {useAuth} from '../core/Auth'
 
 const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
+  usuario: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
+    .required('Se requiere Usuario'),
   password: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
-    .required('Password is required'),
+    .required('Se requiere Contraseña'),
 })
 
-// TODO: Ajustar los placeholders del formulario de login de acuerdo a la API
 const initialValues = {
-  email: 'admin@demo.com',
-  password: 'demo',
+  usuario: 'santiago',
+  password: '123456789',
 }
+// const initialValues = {
+//   email: 'admin@demo.com',
+//   password: 'demo',
+// }
 
 /*
   Formik+YUP+Typescript:
@@ -42,19 +45,40 @@ export function Login() {
     onSubmit: async (values, {setStatus, setSubmitting}) => {
       setLoading(true)
       try {
-        const {data: auth} = await login(values.email, values.password)
-        saveAuth(auth)
-        const {data: user} = await getUserByToken(auth.api_token)
-        setCurrentUser(user)
+        login(values.usuario, values.password)
+          .then(
+            (response) => {
+              setCurrentUser(response.data)
+            }
+          )
       } catch (error) {
         console.error(error)
-        saveAuth(undefined)
-        setStatus('The login details are incorrect')
+        setStatus('Los datos de inicio de sesión son incorrectos')
         setSubmitting(false)
         setLoading(false)
       }
     },
   })
+  
+  // const formik = useFormik({
+  //   initialValues,
+  //   validationSchema: loginSchema,
+  //   onSubmit: async (values, {setStatus, setSubmitting}) => {
+  //     setLoading(true)
+  //     try {
+  //       const {data: auth} = await login(values.email, values.password)
+  //       saveAuth(auth)
+  //       const {data: user} = await getUserByToken(auth.api_token)
+  //       setCurrentUser(user)
+  //     } catch (error) {
+  //       console.error(error)
+  //       saveAuth(undefined)
+  //       setStatus('The login details are incorrect')
+  //       setSubmitting(false)
+  //       setLoading(false)
+  //     }
+  //   },
+  // })
 
   return (
     <form
@@ -130,30 +154,31 @@ export function Login() {
           <div className='text-info'>
             Use account <strong>santiago</strong> and password <strong>123456789</strong> to
             continue.
+            {/* TODO: Cambiar por: Por favor ingrese su nombre de usuario y contraseña */}
           </div>
         </div>
       )}
 
-      {/* begin::Form group */}
+      {/* begin::Form group Usuario */}
       <div className='fv-row mb-8'>
-        <label className='form-label fs-6 fw-bolder text-gray-900'>Correo</label>
+        <label className='form-label fs-6 fw-bolder text-gray-900'>Usuario</label>
         <input
-          placeholder='Email'
-          {...formik.getFieldProps('email')}
+          placeholder='Usuario'
+          {...formik.getFieldProps('usuario')}
           className={clsx(
             'form-control bg-transparent',
-            {'is-invalid': formik.touched.email && formik.errors.email},
+            {'is-invalid': formik.touched.usuario && formik.errors.usuario},
             {
-              'is-valid': formik.touched.email && !formik.errors.email,
+              'is-valid': formik.touched.usuario && !formik.errors.usuario,
             }
           )}
-          type='email'
-          name='email'
+          type='text'
+          name='usuario'
           autoComplete='off'
         />
-        {formik.touched.email && formik.errors.email && (
+        {formik.touched.usuario && formik.errors.usuario && (
           <div className='fv-plugins-message-container'>
-            <span role='alert'>{formik.errors.email}</span>
+            <span role='alert'>{formik.errors.usuario}</span>
           </div>
         )}
       </div>
@@ -193,6 +218,9 @@ export function Login() {
         {/* begin::Link */}
         <Link to='/auth/forgot-password' className='link-primary'>
           Olvidaste tu contraseña?
+          {/* TODO: Si no reconoce la contraseña, ponerle un mensaje de contacte con el administrador para que le ponga una contraseña por defecto 12345 y luego al ingresar de nuevo lo oblige a cambiar contraseña */}
+          {/* if contraseña == 12345 -> Obliga a cambiar contraseña */}
+          {/* TODO: En el perfil del usurio debe haber un boton de restablecer contraseña que pone la contraseña 12345 por defecto de nuevo */}
         </Link>
         {/* end::Link */}
       </div>

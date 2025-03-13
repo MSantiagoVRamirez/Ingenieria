@@ -32,10 +32,13 @@ $text-muted-dark: $gray-500-dark !default;
 
 // Bootstrap contextual colors
 // Primary colors
+// $primary-dark:						#028CFD !default;
+// $primary-active-dark:				#028CFD !default;
+// $primary-clarity-dark: 				rgba(#028CFD, 0.2) !default;
 $primary-dark:						#006AE6 !default;
 $primary-active-dark:				#107EFF !default;
-$primary-light-dark: 				#172331 !default;
 $primary-clarity-dark: 				rgba(#006AE6, 0.2) !default;
+$primary-light-dark: 				#172331 !default;
 $primary-inverse-dark: 				$white !default;
 
 // Secondary colors
