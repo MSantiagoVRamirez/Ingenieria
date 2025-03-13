@@ -45,23 +45,23 @@ const PrivateRoutes = () => {
         <Route path='auth/*' element={<Navigate to='/home' />} />
         {/* Pages */}
         <Route path="my-page" element={<MyPage />} />  {/* new page added */}
-        <Route path="classes/roles-widget" element={<RolesWidget />} />
-        <Route path="classes/modulos-widget" element={<ModulosWidget />} />
-        <Route path="classes/permisos-widget" element={<PermisosWidget />} />
-        <Route path="classes/empresas-widget" element={<EmpresasWidget />} />
-        <Route path="classes/usuarios-widget" element={<UsuariosWidget />} />
-        <Route path="classes/proyectos-widget" element={<ProyectosWidget />} />
-        <Route path="classes/contratos-widget" element={<ContratosWidget />} />
-        <Route path="classes/actas-contrato-widget" element={<ActasContratoWidget />} />
-        <Route path="classes/ampliaciones-contrato-widget" element={<AmpliacionesContratoWidget />} />
-        <Route path="classes/troncales-widget" element={<TroncalesWidget />} />
-        <Route path="classes/ordenes-servicio-widget" element={<OrdenesServicioWidget />} />
-        <Route path="classes/actas-ods-widget" element={<ActasODSWidget />} />
-        <Route path="classes/ordenes-cambio-widget" element={<OrdenesCambioWidget />} />
-        <Route path="classes/tipos-taller-widget" element={<TiposTallerWidget />} />
-        <Route path="classes/talleres-widget" element={<TalleresWidget />} />
-        <Route path="classes/hallazgos-widget" element={<HallazgosWidget />} />
-        <Route path="classes/acciones-cierre-widget" element={<AccionesCierreWidget />} />
+        <Route path="seguridad/roles-widget" element={<RolesWidget />} />
+        <Route path="seguridad/modulos-widget" element={<ModulosWidget />} />
+        <Route path="seguridad/permisos-widget" element={<PermisosWidget />} />
+        <Route path="seguridad/empresas-widget" element={<EmpresasWidget />} />
+        <Route path="seguridad/usuarios-widget" element={<UsuariosWidget />} />
+        <Route path="contratos-ods/proyectos-widget" element={<ProyectosWidget />} />
+        <Route path="contratos-ods/contratos-widget" element={<ContratosWidget />} />
+        <Route path="contratos-ods/actas-contrato-widget" element={<ActasContratoWidget />} />
+        <Route path="contratos-ods/ampliaciones-contrato-widget" element={<AmpliacionesContratoWidget />} />
+        <Route path="contratos-ods/troncales-widget" element={<TroncalesWidget />} />
+        <Route path="contratos-ods/ordenes-servicio-widget" element={<OrdenesServicioWidget />} />
+        <Route path="contratos-ods/actas-ods-widget" element={<ActasODSWidget />} />
+        <Route path="contratos-ods/ordenes-cambio-widget" element={<OrdenesCambioWidget />} />
+        <Route path="talleres-hallazgos/tipos-taller-widget" element={<TiposTallerWidget />} />
+        <Route path="talleres-hallazgos/talleres-widget" element={<TalleresWidget />} />
+        <Route path="talleres-hallazgos/hallazgos-widget" element={<HallazgosWidget />} />
+        <Route path="talleres-hallazgos/acciones-cierre-widget" element={<AccionesCierreWidget />} />
 
         <Route path="gallery/contratos-gallery" element={<ContratosGallery />} />
 

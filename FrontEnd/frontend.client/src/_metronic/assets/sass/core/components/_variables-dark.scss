@@ -31,57 +31,74 @@ $grays-dark: (
 $text-muted-dark: $gray-500-dark !default;
 
 // Bootstrap contextual colors
+
 // Primary colors
-// $primary-dark:						#028CFD !default;
-// $primary-active-dark:				#028CFD !default;
-// $primary-clarity-dark: 				rgba(#028CFD, 0.2) !default;
-$primary-dark:						#006AE6 !default;
-$primary-active-dark:				#107EFF !default;
-$primary-clarity-dark: 				rgba(#006AE6, 0.2) !default;
+$primary-dark:						#C8DE26 !default;
+$primary-active-dark:				#C8DE26 !default;
+$primary-clarity-dark: 				 rgba(#C8DE26, 0.2) !default;
+// $primary-dark:					#006AE6 !default;
+// $primary-active-dark:			#107EFF !default;
+// $primary-clarity-dark: 			 rgba(#006AE6, 0.2) !default;
 $primary-light-dark: 				#172331 !default;
-$primary-inverse-dark: 				$white !default;
+$primary-inverse-dark: 				 $white !default;
 
 // Secondary colors
-$secondary-dark: 					$gray-300-dark !default;
-$secondary-active-dark: 			$gray-400-dark !default;
-$secondary-light-dark: 				$gray-300-dark !default;
-$secondary-clarity-dark:			rgba($gray-300-dark, 0.2) !default; 
-$secondary-inverse-dark:			$white !default; 
+$secondary-dark: 					#016FD7 !default;
+$secondary-active-dark: 			#016FD7 !default;
+$secondary-light-dark: 				 rgba(#016FD7, 0.1) !default; 
+$secondary-clarity-dark:			 rgba(#016FD7, 0.2) !default; 
+// $secondary-dark: 				 $gray-300-dark !default;
+// $secondary-active-dark: 			 $gray-400-dark !default;
+// $secondary-light-dark: 			 $gray-300-dark !default;
+// $secondary-clarity-dark:			 rgba($gray-300-dark, 0.2) !default; 
+$secondary-inverse-dark:			 $white !default; 
 
 // Light colors
-$light-dark: 						$gray-100-dark !default;
+$light-dark: 						 $gray-100-dark !default;
 $light-active-dark: 				#1F212A !default;
-$light-light-dark: 					#1F212A !default;
-$light-clarity-dark: 				rgba(31, 33, 42, 0.20) !default;
-$light-inverse-dark:				$gray-600-dark !default;
+$light-light-dark: 				#1F212A !default;
+$light-clarity-dark: 				 rgba(31, 33, 42, 0.20) !default;
+$light-inverse-dark:				 $gray-600-dark !default;
 
 // Success colors
-$success-dark: 						#00A261 !default; 
-$success-active-dark: 				#01BF73 !default;
-$success-light-dark: 				#1F212A !default;
-$success-clarity-dark: 				rgba(#00A261, 0.2) !default;
-$success-inverse-dark: 				$white !default;
+$success-dark: 					#59D500 !default; 
+$success-active-dark: 				#59D500 !default;
+$success-light-dark: 			 	 rgba(#59D500, 0.1) !default;
+$success-clarity-dark: 			 	 rgba(#59D500, 0.2) !default;
+// $success-dark: 					#00A261 !default; 
+// $success-active-dark: 			#01BF73 !default;
+// $success-light-dark: 			#1F212A !default;
+// $success-clarity-dark: 			 rgba(#00A261, 0.2) !default;
+$success-inverse-dark: 				 $white !default;
 
 // Info colors
-$info-dark: 						#883FFF !default; 
-$info-active-dark: 					#9E63FF !default;
-$info-light-dark: 					#272134 !default;
-$info-clarity-dark: 				rgba(#883FFF, 0.2) !default;
-$info-inverse-dark: 				$white !default;
+$info-dark: 						#010043 !default; 
+$info-active-dark: 				#010043 !default;
+$info-light-dark: 					 rgba(#010043, 0.1) !default;
+$info-clarity-dark: 				 rgba(#010043, 0.2) !default;
+// $info-dark: 					#883FFF !default; 
+// $info-active-dark: 				#9E63FF !default;
+// $info-light-dark: 				#272134 !default;
+// $info-clarity-dark: 				 rgba(#883FFF, 0.2) !default;
+$info-inverse-dark: 				 $white !default;
 
 // Warning colors
-$warning-dark: 						#C59A00 !default; 
+$warning-dark: 					#C59A00 !default; 
 $warning-active-dark: 				#D9AA00 !default;
 $warning-light-dark: 				#242320 !default;
-$warning-clarity-dark: 				rgba(#C59A00, 0.2) !default;
-$warning-inverse-dark: 				$white !default;
+$warning-clarity-dark: 				 rgba(#C59A00, 0.2) !default;
+$warning-inverse-dark: 				 $white !default;
 
 // Danger colors
-$danger-dark: 						#E42855 !default; 
-$danger-active-dark: 				#FF3767 !default;
-$danger-light-dark: 				#302024 !default;
-$danger-clarity-dark: 				rgba(#E42855, 0.2) !default;
-$danger-inverse-dark: 				$white !default;
+$danger-dark: 						#FF5955 !default; 
+$danger-active-dark: 				#FF5955 !default;
+$danger-light-dark: 				 rgba(#FF5955, 0.1) !default;
+$danger-clarity-dark: 				 rgba(#FF5955, 0.2) !default;
+// $danger-dark: 					#E42855 !default; 
+// $danger-active-dark: 			#FF3767 !default;
+// $danger-light-dark: 			#302024 !default;
+// $danger-clarity-dark: 			 rgba(#E42855, 0.2) !default;
+$danger-inverse-dark: 				 $white !default;
 
 // Dark colors
 $dark-dark: 						#272A34 !default;

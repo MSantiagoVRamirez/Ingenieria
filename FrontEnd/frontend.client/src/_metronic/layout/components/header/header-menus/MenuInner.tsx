@@ -9,27 +9,30 @@ export function MenuInner() {
     <>
       {/* <MenuItem title='Dashboard' to='/dashboard' /> */}
       <MenuItem title='Home' to='/home' />
-      <MenuItem title='My Page' to='/my-page' />  {/* new page added */}
-      <MenuInnerWithSub title='Classes' to='/classes' menuPlacement='bottom-start' menuTrigger='click'>
-        <MenuItem title='Roles' to='classes/roles-widget' />
-        <MenuItem title='Modulos' to='classes/modulos-widget' />
-        <MenuItem title='Permisos' to='classes/permisos-widget' />
-        <MenuItem title='Empresas' to='classes/empresas-widget' />
-        <MenuItem title='Usuarios' to='classes/usuarios-widget' />
-        <MenuItem title='Proyectos' to='classes/proyectos-widget' />
-        <MenuItem title='Contratos' to='classes/contratos-widget' />
-        <MenuItem title='Actas de Contrato' to='classes/actas-contratos-widget' />
-        <MenuItem title='Ampliaciones de Contrato' to='classes/ampliaciones-contrato-widget' />
-        <MenuItem title='Troncales' to='classes/troncales-widget' />
-        <MenuItem title='Ordenes de Servicio' to='classes/ordenes-servicio-widget' />
-        <MenuItem title='Actas de ODS' to='classes/actas-ods-widget' />
-        <MenuItem title='Ordenes de Cambio' to='classes/ordenes-cambio-widget' />
-        <MenuItem title='Tipos de Taller' to='classes/tipos-taller-widget' />
-        <MenuItem title='Talleres' to='classes/talleres-widget' />
-        <MenuItem title='Hallazgos' to='classes/hallazgos-widget' />
-        <MenuItem title='Acciones de Cierre' to='classes/acciones-cierre-widget' />
-        <MenuItem title='Contratos Gallery' to='classes/contratos-gallery' />
+      <MenuInnerWithSub title='Seguridad' to='/seguridad' menuPlacement='bottom-start' menuTrigger='click'>
+        <MenuItem title='Roles' to='seguridad/roles-widget' />
+        <MenuItem title='Modulos' to='seguridad/modulos-widget' />
+        <MenuItem title='Permisos' to='seguridad/permisos-widget' />
+        <MenuItem title='Empresas' to='seguridad/empresas-widget' />
+        <MenuItem title='Usuarios' to='seguridad/usuarios-widget' />
       </MenuInnerWithSub>
+      <MenuInnerWithSub title='Contratos y ODS' to='/contratos-ods' menuPlacement='bottom-start' menuTrigger='click'>
+        <MenuItem title='Proyectos' to='contratos-ods/proyectos-widget' />
+        <MenuItem title='Contratos' to='contratos-ods/contratos-widget' />
+        <MenuItem title='Actas de Contrato' to='contratos-ods/actas-contratos-widget' />
+        <MenuItem title='Ampliaciones de Contrato' to='contratos-ods/ampliaciones-contrato-widget' />
+        <MenuItem title='Troncales' to='contratos-ods/troncales-widget' />
+        <MenuItem title='Ordenes de Servicio' to='contratos-ods/ordenes-servicio-widget' />
+        <MenuItem title='Actas de ODS' to='contratos-ods/actas-ods-widget' />
+        <MenuItem title='Ordenes de Cambio' to='contratos-ods/ordenes-cambio-widget' />
+      </MenuInnerWithSub>
+      <MenuInnerWithSub title='Talleres y Hallazgos' to='/talleres-hallazgos' menuPlacement='bottom-start' menuTrigger='click'>
+        <MenuItem title='Tipos de Taller' to='talleres-hallazgos/tipos-taller-widget' />
+        <MenuItem title='Talleres' to='talleres-hallazgos/talleres-widget' />
+        <MenuItem title='Hallazgos' to='talleres-hallazgos/hallazgos-widget' />
+        <MenuItem title='Acciones de Cierre' to='talleres-hallazgos/acciones-cierre-widget' />
+      </MenuInnerWithSub>
+      <MenuItem title='My Page' to='/my-page' />
       <MenuInnerWithSub title='Gallery' to='/gallery' menuPlacement='bottom-start' menuTrigger='click'>
         <MenuItem title='Contratos' to='gallery/contratos-gallery' />
       </MenuInnerWithSub>

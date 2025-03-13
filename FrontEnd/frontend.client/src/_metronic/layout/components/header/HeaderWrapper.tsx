@@ -6,6 +6,8 @@ import {LayoutSetup, useLayout} from '../../core'
 import {Header} from './Header'
 import {Navbar} from './Navbar'
 
+import LogoCenit from '../../../../app/assets/images/LogoCenit.jpg'
+
 export function HeaderWrapper() {
   const {config, classes} = useLayout()
   if (config.app?.header?.default?.container === 'fluid') {
@@ -52,8 +54,9 @@ export function HeaderWrapper() {
                   <Link to='/dashboard' className='d-lg-none'>
                       <img
                         alt='Logo'
-                        src={toAbsoluteUrl('media/logos/default-small.svg')}
-                        className='h-30px'
+                        // src={toAbsoluteUrl('media/logos/default-small.svg')}
+                        src={LogoCenit}
+                        className='h-35px'
                       />
                   </Link>
                 </div>
@@ -65,6 +68,7 @@ export function HeaderWrapper() {
         {!(config.layoutType === 'dark-sidebar' || config.layoutType === 'light-sidebar') && (
           <div className='d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15'>
             <Link to='/dashboard'>
+            {/* TODO: Revisar si los logos de abajo también hay que cambiarlos */}
               {config.layoutType === 'dark-header' ? (
                 <img
                   alt='Logo'

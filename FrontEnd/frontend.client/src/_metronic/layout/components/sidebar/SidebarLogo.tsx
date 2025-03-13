@@ -6,6 +6,7 @@ import {MutableRefObject, useEffect, useRef} from 'react'
 import {ToggleComponent} from '../../../assets/ts/components'
 
 import LogoCenit from '../../../../app/assets/images/LogoCenit.jpg'
+import LogoCenitMini from '../../../../app/assets/images/LogoCenitMini.jpg'
 
 type PropsType = {
   sidebarRef: MutableRefObject<HTMLDivElement | null>
@@ -80,8 +81,8 @@ const SidebarLogo = (props: PropsType) => {
         <img
           alt='Logo'
           // src={toAbsoluteUrl('media/logos/default-small.svg')}
-          src={LogoCenit}
-          className='h-20px app-sidebar-logo-minimize'
+          src={LogoCenitMini}
+          className='h-45px app-sidebar-logo-minimize'
         />
       </Link>
 

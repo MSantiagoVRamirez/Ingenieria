@@ -20,28 +20,28 @@ const SidebarMenuMain = () => {
         title='home'
         fontIcon='bi-app-indicator'
       />
-      <SidebarMenuItem to="/my-page" title="My Page" />  {/* new page added */}
-      <SidebarMenuItemWithSub to='/classes' title='Classes'>
-        <SidebarMenuItem to="classes/roles-widget" title="Roles" />
-        <SidebarMenuItem to="classes/modulos-widget" title="Modulos" />
-        <SidebarMenuItem to="classes/permisos-widget" title="Permisos" />
-        <SidebarMenuItem to="classes/empresas-widget" title="Empresas" />
-        <SidebarMenuItem to="classes/usuarios-widget" title="Usuarios" />
-        <SidebarMenuItem to="classes/proyectos-widget" title="Proyectos" />
-        <SidebarMenuItem to="classes/contratos-widget" title="Contratos" />
-        <SidebarMenuItem to="classes/actas-contrato-widget" title="Actas de Contrato" />
-        <SidebarMenuItem to="classes/ampliaciones-contrato-widget" title="Ampliaciones de Contrato" />
-        <SidebarMenuItem to="classes/troncales-widget" title="Troncales" />
-        <SidebarMenuItem to="classes/ordenes-servicio-widget" title="Ordenes de Servicio" />
-        <SidebarMenuItem to="classes/actas-ods-widget" title="Actas de ODS" />
-        <SidebarMenuItem to="classes/ordenes-cambio-widget" title="Ordenes de Cambio" />
-        <SidebarMenuItem to="classes/tipos-taller-widget" title="Tipos de Taller" />
-        <SidebarMenuItem to="classes/talleres-widget" title="Talleres" />
-        <SidebarMenuItem to="classes/hallazgos-widget" title="Hallazgos" />
-        <SidebarMenuItem to="classes/acciones-cierre-widget" title="Acciones de Cierre" />
+      <SidebarMenuItemWithSub to='/seguridad' title='Seguridad' icon='shield' fontIcon='bi-shield'>
+        <SidebarMenuItem to="seguridad/roles-widget" title="Roles" />
+        <SidebarMenuItem to="seguridad/modulos-widget" title="Modulos" />
+        <SidebarMenuItem to="seguridad/permisos-widget" title="Permisos" />
+        <SidebarMenuItem to="seguridad/empresas-widget" title="Empresas" />
+        <SidebarMenuItem to="seguridad/usuarios-widget" title="Usuarios" />
       </SidebarMenuItemWithSub>
-      <SidebarMenuItemWithSub to='/gallery' title='Gallery'>
-        <SidebarMenuItem to="gallery/contratos-gallery" title="Contratos" />
+      <SidebarMenuItemWithSub to='/contratos-ods' title='Contratos y ODS' icon='file' fontIcon='bi-file'>
+        <SidebarMenuItem to="contratos-ods/proyectos-widget" title="Proyectos" />
+        <SidebarMenuItem to="contratos-ods/contratos-widget" title="Contratos" />
+        <SidebarMenuItem to="contratos-ods/actas-contrato-widget" title="Actas de Contrato" />
+        <SidebarMenuItem to="contratos-ods/ampliaciones-contrato-widget" title="Ampliaciones de Contrato" />
+        <SidebarMenuItem to="contratos-ods/troncales-widget" title="Troncales" />
+        <SidebarMenuItem to="contratos-ods/ordenes-servicio-widget" title="Ordenes de Servicio" />
+        <SidebarMenuItem to="contratos-ods/actas-ods-widget" title="Actas de ODS" />
+        <SidebarMenuItem to="contratos-ods/ordenes-cambio-widget" title="Ordenes de Cambio" />
+      </SidebarMenuItemWithSub>
+      <SidebarMenuItemWithSub to='/talleres-hallazgos' title='Talleres y Hallazgos' icon='calendar' fontIcon='bi-calendar'>
+        <SidebarMenuItem to="talleres-hallazgos/tipos-taller-widget" title="Tipos de Taller" />
+        <SidebarMenuItem to="talleres-hallazgos/talleres-widget" title="Talleres" />
+        <SidebarMenuItem to="talleres-hallazgos/hallazgos-widget" title="Hallazgos" />
+        <SidebarMenuItem to="talleres-hallazgos/acciones-cierre-widget" title="Acciones de Cierre" />
       </SidebarMenuItemWithSub>
       {/* <SidebarMenuItem to='/builder' icon='switch' title='Layout Builder' fontIcon='bi-layers' />
       <div className='menu-item'>
