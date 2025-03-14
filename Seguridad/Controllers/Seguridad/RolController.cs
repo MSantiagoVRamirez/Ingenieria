@@ -18,9 +18,20 @@ namespace Seguridad.Controllers.Seguridad
         {
             _context = context;
         }
+        [HttpPost]
+        [Route("insertar")]
+
+        public async Task<IActionResult> insertar(Rol rol)
+        {
+            await _context.Rol.AddAsync(rol);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
         [HttpGet]
-        [Route("lectura")]
-        public async Task<ActionResult<IEnumerable<Rol>>> lectura()
+        [Route("leer")]
+        public async Task<ActionResult<IEnumerable<Rol>>> leer()
         {
             var rol = await _context.Rol.ToListAsync();
 
@@ -37,16 +48,6 @@ namespace Seguridad.Controllers.Seguridad
                 return NotFound();
             }
             return Ok(roles);
-        }
-        [HttpPost]
-        [Route("insertar")]
-
-        public async Task<IActionResult> insertar(Rol rol)
-        {
-            await _context.Rol.AddAsync(rol);
-            await _context.SaveChangesAsync();
-
-            return Ok();
         }
 
         [HttpPut]

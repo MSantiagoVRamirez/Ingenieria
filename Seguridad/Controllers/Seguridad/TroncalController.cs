@@ -30,8 +30,8 @@ namespace Seguridad.Controllers.Seguridad
         }
 
         [HttpGet]
-        [Route("lectura")]
-        public async Task<ActionResult<IEnumerable<Troncal>>> lectura()
+        [Route("leer")]
+        public async Task<ActionResult<IEnumerable<Troncal>>> leer()
         {
             var troncales = await _context.Troncal.ToListAsync();
 

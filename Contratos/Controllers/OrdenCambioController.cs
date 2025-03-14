@@ -30,8 +30,8 @@ namespace Contratos.Controllers
         }
 
         [HttpGet]
-        [Route("Lectura")]
-        public async Task<ActionResult<IEnumerable<OrdenCambio>>> Lectura()
+        [Route("Leer")]
+        public async Task<ActionResult<IEnumerable<OrdenCambio>>> Leer()
         {
             var ordenCambio = await _context.OrdenCambio
             .ToListAsync();

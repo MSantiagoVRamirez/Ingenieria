@@ -30,8 +30,8 @@ namespace Seguridad.Controllers.Seguridad
         }
 
         [HttpGet]
-        [Route("lectura")]
-        public async Task<ActionResult<IEnumerable<Proyecto>>> lectura()
+        [Route("leer")]
+        public async Task<ActionResult<IEnumerable<Proyecto>>> leer()
         {
             var proyecto = await _context.Proyecto.ToListAsync();
 

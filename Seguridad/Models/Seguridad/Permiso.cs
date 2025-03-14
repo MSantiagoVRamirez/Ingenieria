@@ -18,7 +18,7 @@ namespace Seguridad.Models.Seguridad
 
         public Modulo? moduloPermisoFk { get; set; }
 
-        public bool lectura { get; set; }
+        public bool leer { get; set; }
         public bool editar { get; set; }
         public bool consultar { get; set; }
         public bool insertar { get; set; }

@@ -40,8 +40,8 @@ namespace Seguridad.Controllers.Seguridad
             return CreatedAtAction(nameof(Usuario), new { usuario.id }, usuario);
         }
 
-        [HttpGet("lectura")]
-        public async Task<ActionResult<IEnumerable<Usuario>>> lectura()
+        [HttpGet("leer")]
+        public async Task<ActionResult<IEnumerable<Usuario>>> leer()
         {
             var usuario = await _context.Usuario
                 .ToListAsync();

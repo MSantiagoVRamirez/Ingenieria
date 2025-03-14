@@ -18,29 +18,6 @@ namespace Seguridad.Controllers.Seguridad
         {
             _context = context;
         }
-
-        [HttpGet]
-        [Route("lectura")]
-        public async Task<ActionResult<IEnumerable<Permiso>>> lectura()
-        {
-            var permiso = await _context.Permiso.ToListAsync();
-
-            return Ok(permiso);
-        }
-
-        [HttpGet]
-        [Route("consulta")]
-        public async Task<IActionResult> consulta(int id)
-        {
-            Permiso permiso = await _context.Permiso.FindAsync(id);
-
-            if (permiso == null)
-            {
-                return NotFound();
-            }
-            return Ok(permiso);
-        }
-
         [HttpPost]
         [Route("insertar")]
         public async Task<IActionResult> insertar(Permiso permisos)
@@ -50,17 +27,27 @@ namespace Seguridad.Controllers.Seguridad
 
             return Ok();
         }
-        [HttpDelete]
-        [Route("eliminar")]
-        public async Task<IActionResult> eliminar(int id)
+
+        [HttpGet]
+        [Route("leer")]
+        public async Task<ActionResult<IEnumerable<Permiso>>> leer()
         {
-            var PermisoBorrado = await _context.Permiso.FindAsync(id);
+            var permiso = await _context.Permiso.ToListAsync();
 
-            _context.Permiso.Remove(PermisoBorrado);
-            await _context.SaveChangesAsync();
+            return Ok(permiso);
+        }
 
-            return Ok();
+        [HttpGet]
+        [Route("consultar")]
+        public async Task<IActionResult> consultar(int id)
+        {
+            Permiso permiso = await _context.Permiso.FindAsync(id);
 
+            if (permiso == null)
+            {
+                return NotFound();
+            }
+            return Ok(permiso);
         }
         [HttpPut]
         [Route("editar")]
@@ -90,7 +77,7 @@ namespace Seguridad.Controllers.Seguridad
             }
 
             // Actualizar las propiedades del permiso existente
-            Existentepermiso.lectura = permiso.lectura;
+            Existentepermiso.leer = permiso.leer;
             Existentepermiso.editar = permiso.editar;
             Existentepermiso.consultar = permiso.consultar;
             Existentepermiso.insertar = permiso.insertar;
@@ -107,6 +94,18 @@ namespace Seguridad.Controllers.Seguridad
                 Estado = "ok",
                 Mensaje = "Permiso actualizado correctamente"
             });
+        }
+        [HttpDelete]
+        [Route("eliminar")]
+        public async Task<IActionResult> eliminar(int id)
+        {
+            var PermisoBorrado = await _context.Permiso.FindAsync(id);
+
+            _context.Permiso.Remove(PermisoBorrado);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+
         }
     }
 }

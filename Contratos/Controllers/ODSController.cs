@@ -30,8 +30,8 @@ namespace Contratos.Controllers
             return Ok();
         }
 
-        [HttpGet("lectura")]
-        public async Task<ActionResult<IEnumerable<Usuario>>> lectura()
+        [HttpGet("leer")]
+        public async Task<ActionResult<IEnumerable<Usuario>>> leer()
         {
             var contrato = await _context.ODS
                 .ToListAsync();

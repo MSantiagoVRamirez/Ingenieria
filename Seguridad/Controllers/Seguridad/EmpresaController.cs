@@ -9,7 +9,7 @@ namespace Seguridad.Controllers.Seguridad
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[ServiceFilter(typeof(PermisoAuthorizationFilter))]
+    [ServiceFilter(typeof(PermisoAuthorizationFilter))]
     public class EmpresaController : ControllerBase
     {
         private readonly IngenieriaContext _context;
@@ -30,16 +30,16 @@ namespace Seguridad.Controllers.Seguridad
         }
 
         [HttpGet]
-        [Route("lectura")]
-        public async Task<ActionResult<IEnumerable<Empresa>>> lectura()
+        [Route("leer")]
+        public async Task<ActionResult<IEnumerable<Empresa>>> leer()
         {
             var empresa = await _context.Empresa.ToListAsync();
 
             return Ok(empresa);
         }
         [HttpGet]
-        [Route("consulta")]
-        public async Task<IActionResult> consulta(int id)
+        [Route("consultar")]
+        public async Task<IActionResult> consultar(int id)
         {
             Empresa empresa = await _context.Empresa.FindAsync(id);
 
