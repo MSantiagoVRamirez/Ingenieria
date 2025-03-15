@@ -10,8 +10,6 @@ import { ActaODS } from "../interfaces/ActaODS";
 import { OrdenCambio } from "../interfaces/OrdenCambio";
 import { Taller } from "../interfaces/Taller";
 
-import { Rol } from "../interfaces/Rol";
-
 import empresaService from "../services/empresaService";
 import contratoService from "../services/contratoService";
 import actaContratoService from "../services/actaContratoService";
@@ -21,9 +19,6 @@ import odsService from "../services/odsService";
 import actaOdsService from "../services/actaOdsService";
 import ordenCambioService from "../services/ordenCambioService";
 import tallerService from "../services/tallerService";
-
-import authService from "../services/authService";
-import rolService2 from "../services/rolService2";
 
 import { KTIcon } from "../../_metronic/helpers";
 
@@ -55,8 +50,6 @@ export function MyPage() {
   const [actasOds, setActasOds] = useState<ActaODS[]>([]);
   const [ordenesCambio, setOrdenesCambio] = useState<OrdenCambio[]>([]);
   const [talleres, setTalleres] = useState<Taller[]>([]);
-
-  const [roles, setRoles] = useState<Rol[]>([]);
 
   const getEmpresas = () => {
     empresaService.getAll().then((response) => {
@@ -112,19 +105,6 @@ export function MyPage() {
     });
   }
 
-  const login = () => {
-    authService.login('santiago', '123456789').then((response) => {
-      console.log(response.data);
-    });
-  }
-
-  const getRoles = () => {
-    rolService2.getAll().then((response) => {
-      console.log(response.data);
-      setRoles(response.data);
-    });
-  }
-
   useEffect(() => {
     getEmpresas();
     getContratos();
@@ -141,10 +121,6 @@ export function MyPage() {
     setCurrentContrato(contratos.find(contrato => contrato.id === contratoId) || defaultContrato);
   }, [contratos]);
 
-  useEffect(() => {
-    login();
-  }, []);
-
   const gridStyle = {
     marginTop: '10px',
     display: 'grid',
@@ -160,13 +136,6 @@ export function MyPage() {
 
   return (
     <div className="container d-flex flex-column gap-3 p-10">
-      <button className="btn btn-primary" onClick={getRoles}>Get Roles</button>
-      <div className="d-flex gap-3">
-        <h1>Lista de Roles</h1>
-        <div>
-          { roles.map(rol => <p key={rol.id}>{rol.nombre}</p>) }
-        </div>
-      </div>
       <h1>{currentContrato.nombre}</h1>
       <p>
         {empresas.find(empresa => empresa.id === currentContrato.empresaId)?.nombre}

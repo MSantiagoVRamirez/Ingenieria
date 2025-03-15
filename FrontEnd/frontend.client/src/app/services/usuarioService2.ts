@@ -1,7 +1,7 @@
 import axios from "axios";
-import { Rol } from "../interfaces/Rol";
+import { Usuario } from "../interfaces/Usuario";
 
-const API_URL = "https://localhost:7023/api/Rol";
+const API_URL = "https://localhost:7023/api/Usuario";
 
 const getAll = () => {
   return axios.get(`${API_URL}/lectura`);
@@ -11,11 +11,11 @@ const get = (id: number) => {
   return axios.get(`${API_URL}/consultar`, { params: { "Id": id } });
 }
 
-const create = (data: Rol) => {
+const create = (data: Usuario) => {
   return axios.post(`${API_URL}/insertar`, data);
 }
 
-const update = (data: Rol) => {
+const update = (data: Usuario) => {
   return axios.put(`${API_URL}/editar`, data);
 }
 

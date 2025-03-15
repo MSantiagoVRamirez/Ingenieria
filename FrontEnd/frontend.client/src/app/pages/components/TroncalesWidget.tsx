@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Troncal } from "../../interfaces/Troncal"
 import troncalService from "../../services/troncalService"
+import troncalService2 from "../../services/troncalService2"
 import { KTIcon } from "../../../_metronic/helpers"
 import { Dropdown1 } from "../../../_metronic/partials"
 
@@ -20,7 +21,7 @@ export function TroncalesWidget() {
 
   // Obtener todas las troncales
   const fetchTroncales = () => {
-    troncalService.getAll()
+    troncalService2.getAll()
       .then((response) => {
         setTroncales(response.data)  // Llenar la lista de troncales
       })
@@ -36,7 +37,7 @@ export function TroncalesWidget() {
 
   // Obtener una sola troncal (para editar)
   const fetchTroncal = (id: number) => {
-    troncalService.get(id)
+    troncalService2.get(id)
       .then((response) => {
         setEditedTroncal(response.data)  // Llenar el formulario de edición
         setShowEditForm(true)  // Mostrar el formulario de edición
@@ -48,7 +49,7 @@ export function TroncalesWidget() {
 
   // Crear una troncal
   const createTroncal = (data: Troncal) => {
-    troncalService.create(data)
+    troncalService2.create(data)
       .then((response) => {
         setNewTroncal(defaultTroncal) // Limpiar el formulario
         fetchTroncales()  // Actualizar la lista de troncales
@@ -61,7 +62,7 @@ export function TroncalesWidget() {
 
   // Actualizar una troncal
   const updateTroncal = (id: number, data: Troncal) => {
-    troncalService.update(id, data)
+    troncalService2.update(data)
       .then((response) => {
         setEditedTroncal(defaultTroncal) // Limpiar el formulario
         fetchTroncales()  // Actualizar la lista de troncales
@@ -74,7 +75,7 @@ export function TroncalesWidget() {
 
   // Eliminar una troncal
   const deleteTroncal = (id: number) => {
-    troncalService.remove(id)
+    troncalService2.remove(id)
       .then((response) => {
         setDeleteTroncalId(defaultTroncal.id) // Limpiar el input de eliminación
         fetchTroncales()  // Actualizar la lista de troncales

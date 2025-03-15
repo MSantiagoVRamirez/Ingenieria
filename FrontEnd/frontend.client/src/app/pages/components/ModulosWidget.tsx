@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Modulo } from "../../interfaces/Modulo"
 import moduloService from "../../services/moduloService"
+import moduloService2 from "../../services/moduloService2"
 import { KTIcon } from "../../../_metronic/helpers"
 import { Dropdown1 } from "../../../_metronic/partials"
 
@@ -21,7 +22,7 @@ export function ModulosWidget() {
 
   // Obtener todos los módulos
   const fetchModulos = () => {
-    moduloService.getAll()
+    moduloService2.getAll()
       .then((response) => {
         setModulos(response.data)  // Llenar la lista de módulos
       })
@@ -37,7 +38,7 @@ export function ModulosWidget() {
 
   // Obtener un solo módulo (para editar)
   const fetchModulo = (id: number) => {
-    moduloService.get(id)
+    moduloService2.get(id)
       .then((response) => {
         setEditedModulo(response.data)  // Llenar el formulario de edición
         setShowEditForm(true)  // Mostrar el formulario de edición
@@ -49,7 +50,7 @@ export function ModulosWidget() {
 
   // Crear un módulo
   const createModulo = (data: Modulo) => {
-    moduloService.create(data)
+    moduloService2.create(data)
       .then((response) => {
         setNewModulo(defaultModulo) // Limpiar el formulario
         fetchModulos()  // Actualizar la lista de módulos
@@ -62,7 +63,7 @@ export function ModulosWidget() {
 
   // Actualizar un módulo
   const updateModulo = (id: number, data: Modulo) => {
-    moduloService.update(id, data)
+    moduloService2.update(data)
       .then((response) => {
         setEditedModulo(defaultModulo) // Limpiar el formulario
         fetchModulos()  // Actualizar la lista de módulos
@@ -75,7 +76,7 @@ export function ModulosWidget() {
 
   // Eliminar un módulo
   const deleteModulo = (id: number) => {
-    moduloService.remove(id)
+    moduloService2.remove(id)
       .then((response) => {
         setDeleteModuloId(defaultModulo.id) // Limpiar el input de eliminación
         fetchModulos()  // Actualizar la lista de módulos

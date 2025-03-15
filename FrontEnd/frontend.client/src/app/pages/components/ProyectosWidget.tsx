@@ -3,6 +3,8 @@ import { Proyecto } from "../../interfaces/Proyecto"
 import { Usuario } from "../../interfaces/Usuario"
 import proyectoService from "../../services/proyectoService"
 import usuarioService from "../../services/usuarioService"
+import proyectoService2 from "../../services/proyectoService2"
+import usuarioService2 from "../../services/usuarioService2"
 import { KTIcon } from "../../../_metronic/helpers"
 import { Dropdown1 } from "../../../_metronic/partials"
 
@@ -26,7 +28,7 @@ export function ProyectosWidget() {
 
   // Obtener todos los usuarios
   const fetchUsuarios = () => {
-    usuarioService.getAll()
+    usuarioService2.getAll()
       .then((response) => {
         setUsuarios(response.data)  // Llenar la lista de usuarios
       })
@@ -37,7 +39,7 @@ export function ProyectosWidget() {
 
   // Obtener todos los proyectos
   const fetchProyectos = () => {
-    proyectoService.getAll()
+    proyectoService2.getAll()
       .then((response) => {
         setProyectos(response.data)  // Llenar la lista de proyectos
       })
@@ -54,7 +56,7 @@ export function ProyectosWidget() {
 
   // Obtener un solo proyecto (para editar)
   const fetchProyecto = (id: number) => {
-    proyectoService.get(id)
+    proyectoService2.get(id)
       .then((response) => {
         setEditedProyecto(response.data)  // Llenar el formulario de edición
         setShowEditForm(true)  // Mostrar el formulario de edición
@@ -66,7 +68,7 @@ export function ProyectosWidget() {
 
   // Crear un proyecto
   const createProyecto = (data: Proyecto) => {
-    proyectoService.create(data)
+    proyectoService2.create(data)
       .then((response) => {
         setNewProyecto(defaultProyecto) // Limpiar el formulario
         fetchProyectos()  // Actualizar la lista de proyectos
@@ -79,7 +81,7 @@ export function ProyectosWidget() {
 
   // Actualizar un proyecto
   const updateProyecto = (id: number, data: Proyecto) => {
-    proyectoService.update(id, data)
+    proyectoService2.update(data)
       .then((response) => {
         setEditedProyecto(defaultProyecto) // Limpiar el formulario
         fetchProyectos()  // Actualizar la lista de proyectos
@@ -93,7 +95,7 @@ export function ProyectosWidget() {
 
   // Eliminar un proyecto
   const deleteProyecto = (id: number) => {
-    proyectoService.remove(id)
+    proyectoService2.remove(id)
       .then((response) => {
         setDeleteProyectoId(defaultProyecto.id) // Limpiar el input de eliminación
         fetchProyectos()  // Actualizar la lista de proyectos

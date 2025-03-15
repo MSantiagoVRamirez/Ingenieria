@@ -5,6 +5,9 @@ import { Modulo } from "../../interfaces/Modulo"
 import permisoService from "../../services/permisoService"
 import rolService from "../../services/rolService"
 import moduloService from "../../services/moduloService"
+import permisoService2 from "../../services/permisoService2"
+import rolService2 from "../../services/rolService2"
+import moduloService2 from "../../services/moduloService2"
 import { KTIcon } from "../../../_metronic/helpers"
 import { Dropdown1 } from "../../../_metronic/partials"
 
@@ -35,7 +38,7 @@ export function PermisosWidget() {
   
   // Obtener todos los roles
   const fetchRoles = () => {
-    rolService.getAll()
+    rolService2.getAll()
     .then((response) => {
       setRoles(response.data)  // Llenar la lista de roles
     })
@@ -46,7 +49,7 @@ export function PermisosWidget() {
   
   // Obtener todos los módulos
   const fetchModulos = () => {
-    moduloService.getAll()
+    moduloService2.getAll()
     .then((response) => {
       setModulos(response.data)  // Llenar la lista de módulos
     })
@@ -57,7 +60,7 @@ export function PermisosWidget() {
 
   // Obtener todos los permisos
   const fetchPermisos = () => {
-    permisoService.getAll()
+    permisoService2.getAll()
       .then((response) => {
         setPermisos(response.data)  // Llenar la lista de permisos
       })
@@ -75,7 +78,7 @@ export function PermisosWidget() {
 
   // Obtener un solo permiso (para editar)
   const fetchPermiso = (id: number) => {
-    permisoService.get(id)
+    permisoService2.get(id)
       .then((response) => {
         setEditedPermiso(response.data)  // Llenar el formulario de edición
         setShowEditForm(true)  // Mostrar el formulario de edición
@@ -87,7 +90,7 @@ export function PermisosWidget() {
 
   // Crear un permiso
   const createPermiso = (data: Permiso) => {
-    permisoService.create(data)
+    permisoService2.create(data)
       .then((response) => {
         setNewPermiso(defaultPermiso) // Limpiar el formulario
         fetchPermisos()  // Actualizar la lista de permisos
@@ -100,7 +103,7 @@ export function PermisosWidget() {
 
   // Actualizar un permiso
   const updatePermiso = (id: number, data: Permiso) => {
-    permisoService.update(id, data)
+    permisoService2.update(data)
       .then((response) => {
         setEditedPermiso(defaultPermiso) // Limpiar el formulario
         fetchPermisos()  // Actualizar la lista de permisos
@@ -113,7 +116,7 @@ export function PermisosWidget() {
 
   // Eliminar un permiso
   const deletePermiso = (id: number) => {
-    permisoService.remove(id)
+    permisoService2.remove(id)
       .then((response) => {
         setDeletePermisoId(defaultPermiso.id) // Limpiar el input de eliminación
         fetchPermisos()  // Actualizar la lista de permisos

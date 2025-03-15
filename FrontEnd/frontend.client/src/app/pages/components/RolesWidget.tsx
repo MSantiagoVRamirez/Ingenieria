@@ -38,7 +38,7 @@ export function RolesWidget() {
 
   // Obtener un solo rol (para editar)
   const fetchRol = (id: number) => {
-    rolService.get(id)
+    rolService2.get(id)
       .then((response) => {
         setEditedRol(response.data)  // Llenar el formulario de edición
         setShowEditForm(true)  // Mostrar el formulario de edición
@@ -50,7 +50,7 @@ export function RolesWidget() {
 
   // Crear un rol
   const createRol = (data: Rol) => {
-    rolService.create(data)
+    rolService2.create(data)
       .then((response) => {
         setNewRol(defaultRol) // Limpiar el formulario
         fetchRoles()  // Actualizar la lista de roles
@@ -63,7 +63,7 @@ export function RolesWidget() {
 
   // Actualizar un rol
   const updateRol = (id: number, data: Rol) => {
-    rolService.update(id, data)
+    rolService2.update(data)
       .then((response) => {
         setEditedRol(defaultRol) // Limpiar el formulario
         fetchRoles()  // Actualizar la lista de roles
@@ -76,7 +76,7 @@ export function RolesWidget() {
 
   // Eliminar un rol
   const deleteRol = (id: number) => {
-    rolService.remove(id)
+    rolService2.remove(id)
       .then((response) => {
         setDeleteRolId(defaultRol.id) // Limpiar el input de eliminación
         fetchRoles()  // Actualizar la lista de roles

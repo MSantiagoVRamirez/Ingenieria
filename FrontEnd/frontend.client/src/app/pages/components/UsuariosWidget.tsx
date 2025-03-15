@@ -5,6 +5,9 @@ import { Rol } from "../../interfaces/Rol"
 import usuarioService from "../../services/usuarioService"
 import empresaService from "../../services/empresaService"
 import rolService from "../../services/rolService"
+import usuarioService2 from "../../services/usuarioService2"
+import empresaService2 from "../../services/empresaService2"
+import rolService2 from "../../services/rolService2"
 import { KTIcon } from "../../../_metronic/helpers"
 import { Dropdown1 } from "../../../_metronic/partials"
 
@@ -37,7 +40,7 @@ export function UsuariosWidget() {
   
   // Obtener todas las empresas
   const fetchEmpresas = () => {
-    empresaService.getAll()
+    empresaService2.getAll()
     .then((response) => {
       setEmpresas(response.data)  // Llenar la lista de empresas
     })
@@ -48,7 +51,7 @@ export function UsuariosWidget() {
 
   // Obtener todos los roles
   const fetchRoles = () => {
-    rolService.getAll()
+    rolService2.getAll()
     .then((response) => {
       setRoles(response.data)  // Llenar la lista de roles
     })
@@ -59,7 +62,7 @@ export function UsuariosWidget() {
 
   // Obtener todos los usuarios
   const fetchUsuarios = () => {
-    usuarioService.getAll()
+    usuarioService2.getAll()
       .then((response) => {
         setUsuarios(response.data)  // Llenar la lista de usuarios
       })
@@ -77,7 +80,7 @@ export function UsuariosWidget() {
 
   // Obtener un solo usuario (para editar)
   const fetchUsuario = (id: number) => {
-    usuarioService.get(id)
+    usuarioService2.get(id)
       .then((response) => {
         setEditedUsuario(response.data)  // Llenar el formulario de edición
         setShowEditForm(true)  // Mostrar el formulario de edición
@@ -89,7 +92,7 @@ export function UsuariosWidget() {
 
   // Crear un usuario
   const createUsuario = (data: Usuario) => {
-    usuarioService.create(data)
+    usuarioService2.create(data)
       .then((response) => {
         setNewUsuario(defaultUsuario) // Limpiar el formulario
         fetchUsuarios()  // Actualizar la lista de usuarios
@@ -102,7 +105,7 @@ export function UsuariosWidget() {
 
   // Actualizar un usuario
   const updateUsuario = (id: number, data: Usuario) => {
-    usuarioService.update(id, data)
+    usuarioService2.update(data)
       .then((response) => {
         setEditedUsuario(defaultUsuario) // Limpiar el formulario
         fetchUsuarios()  // Actualizar la lista de usuarios
@@ -115,7 +118,7 @@ export function UsuariosWidget() {
 
   // Eliminar un usuario
   const deleteUsuario = (id: number) => {
-    usuarioService.remove(id)
+    usuarioService2.remove(id)
       .then((response) => {
         setDeleteUsuarioId(defaultUsuario.id) // Limpiar el input de eliminación
         fetchUsuarios()  // Actualizar la lista de usuarios

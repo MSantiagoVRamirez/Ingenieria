@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Empresa } from "../../interfaces/Empresa"
 import empresaService from "../../services/empresaService"
+import empresaService2 from "../../services/empresaService2"
 import { KTIcon } from "../../../_metronic/helpers"
 import { Dropdown1 } from "../../../_metronic/partials"
 
@@ -21,7 +22,7 @@ export function EmpresasWidget() {
 
   // Obtener todas las empresas
   const fetchEmpresas = () => {
-    empresaService.getAll()
+    empresaService2.getAll()
       .then((response) => {
         setEmpresas(response.data)  // Llenar la lista de empresas
       })
@@ -37,7 +38,7 @@ export function EmpresasWidget() {
 
   // Obtener una sola empresa (para editar)
   const fetchEmpresa = (id: number) => {
-    empresaService.get(id)
+    empresaService2.get(id)
       .then((response) => {
         setEditedEmpresa(response.data)  // Llenar el formulario de edición
         setShowEditForm(true)  // Mostrar el formulario de edición
@@ -49,7 +50,7 @@ export function EmpresasWidget() {
 
   // Crear una empresa
   const createEmpresa = (data: Empresa) => {
-    empresaService.create(data)
+    empresaService2.create(data)
       .then((response) => {
         setNewEmpresa(defaultEmpresa) // Limpiar el formulario
         fetchEmpresas()  // Actualizar la lista de empresas
@@ -62,7 +63,7 @@ export function EmpresasWidget() {
 
   // Actualizar una empresa
   const updateEmpresa = (id: number, data: Empresa) => {
-    empresaService.update(id, data)
+    empresaService2.update(data)
       .then((response) => {
         setEditedEmpresa(defaultEmpresa) // Limpiar el formulario
         fetchEmpresas()  // Actualizar la lista de empresas
@@ -75,7 +76,7 @@ export function EmpresasWidget() {
 
   // Eliminar una empresa
   const deleteEmpresa = (id: number) => {
-    empresaService.remove(id)
+    empresaService2.remove(id)
       .then((response) => {
         setDeleteEmpresaId(defaultEmpresa.id) // Limpiar el input de eliminación
         fetchEmpresas()  // Actualizar la lista de empresas
