@@ -30,16 +30,16 @@ namespace Seguridad.Controllers.Seguridad
         }
 
         [HttpGet]
-        [Route("lectura")]
-        public async Task<ActionResult<IEnumerable<Empresa>>> lectura()
+        [Route("leer")]
+        public async Task<ActionResult<IEnumerable<Empresa>>> leer()
         {
             var empresa = await _context.Empresa.ToListAsync();
 
             return Ok(empresa);
         }
         [HttpGet]
-        [Route("consulta")]
-        public async Task<IActionResult> consulta(int id)
+        [Route("consultar")]
+        public async Task<IActionResult> consultar(int id)
         {
             Empresa empresa = await _context.Empresa.FindAsync(id);
 
@@ -52,15 +52,27 @@ namespace Seguridad.Controllers.Seguridad
 
         [HttpPut]
         [Route("editar")]
-        public async Task<IActionResult> editar(int id, Empresa empresa)
+        public async Task<IActionResult> editar(Empresa empresa)
         {
-            var EmpresaExistente = await _context.Empresa.FindAsync(id);
-
-            EmpresaExistente!.nombre = empresa.nombre;
+            var EmpresaExistente = await _context.Empresa.FindAsync(empresa.id);
+            if (EmpresaExistente == null)
+            {
+                return NotFound();
+            }
+            EmpresaExistente.nombre = empresa.nombre;
             EmpresaExistente.nit = empresa.nit;
 
 
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Empresa.Update(EmpresaExistente);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+
+                return StatusCode(500, "Error al actualizar el rol en la base de datos.");
+            }
             return Ok();
         }
 

@@ -37,11 +37,11 @@ namespace Seguridad.Controllers.Seguridad
             _context.Usuario.Add(usuario);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(Usuario), new { usuario.id }, usuario);
+            return Ok(usuario);
         }
 
-        [HttpGet("lectura")]
-        public async Task<ActionResult<IEnumerable<Usuario>>> lectura()
+        [HttpGet("leer")]
+        public async Task<ActionResult<IEnumerable<Usuario>>> leer()
         {
             var usuario = await _context.Usuario
                 .ToListAsync();

@@ -18,17 +18,28 @@ namespace Seguridad.Controllers.Seguridad
         {
             _context = context;
         }
+
+        [HttpPost]
+        [Route("insertar")]
+
+        public async Task<IActionResult> insertar(Modulo modulo)
+        {
+            await _context.Modulo.AddAsync(modulo);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
         [HttpGet]
-        [Route("lectura")]
-        public async Task<ActionResult<IEnumerable<Modulo>>> lectura()
+        [Route("leer")]
+        public async Task<ActionResult<IEnumerable<Modulo>>> leer()
         {
             var modulo = await _context.Modulo.ToListAsync();
 
             return Ok(modulo);
         }
         [HttpGet]
-        [Route("consulta")]
-        public async Task<IActionResult> consulta(int id)
+        [Route("consultar")]
+        public async Task<IActionResult> consultar(int id)
         {
             Modulo modulo = await _context.Modulo.FindAsync(id);
 
@@ -39,15 +50,42 @@ namespace Seguridad.Controllers.Seguridad
             return Ok(modulo);
         }
 
-
-        [HttpPost]
-        [Route("insertar")]
-
-        public async Task<IActionResult> insertar(Modulo modulo)
+        [HttpPut]
+        [Route("editar")]
+        public async Task<IActionResult> editar(Modulo modulo)
         {
-            await _context.Modulo.AddAsync(modulo);
-            await _context.SaveChangesAsync();
+            var ModuloExistente = await _context.Modulo.FindAsync(modulo.id);
+            if (ModuloExistente == null)
+            {
+                return NotFound();
+            }
+            ModuloExistente.nombre = modulo.nombre;
+            ModuloExistente.estado = modulo.estado;
 
+
+
+            try
+            {
+                _context.Modulo.Update(ModuloExistente);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+
+                return StatusCode(500, "Error al actualizar el rol en la base de datos.");
+            }
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route("eliminar")]
+        public async Task<IActionResult> eliminar(int id)
+        {
+            var ModuloBorrado = await _context.Modulo.FindAsync(id);
+
+            _context.Modulo.Remove(ModuloBorrado);
+
+            await _context.SaveChangesAsync();
             return Ok();
         }
     }

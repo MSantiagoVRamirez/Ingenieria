@@ -30,8 +30,8 @@ namespace Seguridad.Controllers.Seguridad
         }
 
         [HttpGet]
-        [Route("lectura")]
-        public async Task<ActionResult<IEnumerable<Proyecto>>> lectura()
+        [Route("leer")]
+        public async Task<ActionResult<IEnumerable<Proyecto>>> leer()
         {
             var proyecto = await _context.Proyecto.ToListAsync();
 
@@ -52,13 +52,25 @@ namespace Seguridad.Controllers.Seguridad
 
         [HttpPut]
         [Route("editar")]
-        public async Task<IActionResult> editar(int Id, Proyecto proyecto)
+        public async Task<IActionResult> editar(Proyecto proyecto)
         {
-            var ProyectoExistente = await _context.Proyecto.FindAsync(Id);
-
+            var ProyectoExistente = await _context.Proyecto.FindAsync(proyecto.id);
+            if (ProyectoExistente == null)
+            {
+                return NotFound();
+            }
             ProyectoExistente.nombre = proyecto.nombre;
 
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Proyecto.Update(ProyectoExistente);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+
+                return StatusCode(500, "Error al actualizar el rol en la base de datos.");
+            }
             return Ok();
         }
 

@@ -80,7 +80,7 @@ namespace Seguridad.Controllers
             // Agrega los permisos como claims
             foreach (var permiso in permisos)
             {
-                claims.Add(new Claim("Permiso_" + permiso.moduloId, $"{permiso.lectura}:{permiso.editar}:{permiso.insertar}:{permiso.eliminar}:{permiso.exportar}:{permiso.importar}"));
+                claims.Add(new Claim("Permiso_" + permiso.moduloId, $"{permiso.leer}:{permiso.editar}:{permiso.insertar}:{permiso.eliminar}:{permiso.exportar}:{permiso.importar}"));
             }
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
