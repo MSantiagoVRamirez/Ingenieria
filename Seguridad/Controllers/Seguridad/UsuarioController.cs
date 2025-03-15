@@ -37,7 +37,7 @@ namespace Seguridad.Controllers.Seguridad
             _context.Usuario.Add(usuario);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(Usuario), new { usuario.id }, usuario);
+            return Ok(usuario);
         }
 
         [HttpGet("leer")]

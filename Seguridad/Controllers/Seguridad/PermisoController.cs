@@ -49,6 +49,7 @@ namespace Seguridad.Controllers.Seguridad
             }
             return Ok(permiso);
         }
+
         [HttpPut]
         [Route("editar")]
         public async Task<IActionResult> editar(Permiso permiso)

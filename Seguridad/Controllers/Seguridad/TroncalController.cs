@@ -51,14 +51,26 @@ namespace Seguridad.Controllers.Seguridad
         }
 
         [HttpPut]
-        [Route("Editar")]
-        public async Task<IActionResult> editar(int id, Troncal troncales)
+        [Route("editar")]
+        public async Task<IActionResult> editar(Troncal troncal)
         {
-            var TrocalExistente = await _context.Troncal.FindAsync(id);
+            var TroncalExistente = await _context.Troncal.FindAsync(troncal.id);
+            if (TroncalExistente == null)
+            {
+                return NotFound();
+            }
+            TroncalExistente.nombre = troncal.nombre;
 
-            TrocalExistente.nombre = troncales.nombre;
+            try
+            {
+                _context.Troncal.Update(TroncalExistente);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
 
-            await _context.SaveChangesAsync();
+                return StatusCode(500, "Error al actualizar el rol en la base de datos.");
+            }
             return Ok();
         }
 

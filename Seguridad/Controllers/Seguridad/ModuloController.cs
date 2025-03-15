@@ -49,17 +49,31 @@ namespace Seguridad.Controllers.Seguridad
             }
             return Ok(modulo);
         }
+
         [HttpPut]
         [Route("editar")]
-        public async Task<IActionResult> editar(int id, Modulo modulo)
+        public async Task<IActionResult> editar(Modulo modulo)
         {
-            var ModuloExistente = await _context.Modulo.FindAsync(id);
-
-            ModuloExistente!.nombre = modulo.nombre;
+            var ModuloExistente = await _context.Modulo.FindAsync(modulo.id);
+            if (ModuloExistente == null)
+            {
+                return NotFound();
+            }
+            ModuloExistente.nombre = modulo.nombre;
             ModuloExistente.estado = modulo.estado;
 
 
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                _context.Modulo.Update(ModuloExistente);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+
+                return StatusCode(500, "Error al actualizar el rol en la base de datos.");
+            }
             return Ok();
         }
 
