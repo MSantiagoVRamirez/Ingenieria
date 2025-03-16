@@ -4,7 +4,7 @@ import { Troncal } from "../interfaces/Troncal";
 const API_URL = "https://localhost:7023/api/Troncal";
 
 const getAll = () => {
-  return axios.get(`${API_URL}/lectura`);
+  return axios.get(`${API_URL}/leer`);
 }
 
 const get = (id: number) => {

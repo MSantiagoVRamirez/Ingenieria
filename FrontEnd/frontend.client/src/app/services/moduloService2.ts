@@ -4,7 +4,7 @@ import { Modulo } from "../interfaces/Modulo";
 const API_URL = "https://localhost:7023/api/Modulo";
 
 const getAll = () => {
-  return axios.get(`${API_URL}/lectura`);
+  return axios.get(`${API_URL}/leer`);
 }
 
 const get = (id: number) => {

@@ -4,7 +4,7 @@ import { Rol } from "../interfaces/Rol";
 const API_URL = "https://localhost:7023/api/Rol";
 
 const getAll = () => {
-  return axios.get(`${API_URL}/lectura`);
+  return axios.get(`${API_URL}/leer`);
 }
 
 const get = (id: number) => {
