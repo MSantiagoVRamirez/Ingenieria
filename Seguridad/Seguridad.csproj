@@ -24,4 +24,8 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FrontEnd\frontend.client\frontend.client.esproj" />
+  </ItemGroup>
+
 </Project>
