@@ -22,14 +22,18 @@ namespace Seguridad.Controllers.Seguridad
 
         [HttpPost]
         [Route("insertar")]
-        public async Task<IActionResult> insertar([FromBody] Usuario usuario)
+        public async Task<IActionResult> insertar(Usuario usuario)
         {
             var rolExistente = await _context.Rol.FindAsync(usuario.rolId);
             if (rolExistente == null)
             {
                 return BadRequest("El rol especificado no existe.");
             }
-
+            // Valida que la contraseña y la confirmación coincidan
+            if (usuario.password != usuario.confirmPassword)
+            {
+                return BadRequest("Error: La contraseña no coincide.");
+            }
             usuario.password = Encriptar.EncriptarClave(usuario.password);
             usuario.confirmPassword = Encriptar.EncriptarClave(usuario.confirmPassword);
             usuario.fechaCreacion = DateTime.Now;
@@ -62,16 +66,15 @@ namespace Seguridad.Controllers.Seguridad
 
             return usuario;
         }
-
-        [HttpPut("editar")]
-        public async Task<IActionResult> editar(int id, [FromBody] Usuario usuario)
+        [HttpPut]
+        [Route("editar")]
+        public async Task<IActionResult> editar(Usuario usuario)
         {
-            var usuarioExistente = await _context.Usuario.FindAsync(id);
+            var usuarioExistente = await _context.Usuario.FindAsync(usuario.id);
             if (usuarioExistente == null)
             {
-                return NotFound("Usuario no encontrado.");
+                return NotFound();
             }
-
             usuarioExistente.usuario = usuario.usuario;
             usuarioExistente.password = Encriptar.EncriptarClave(usuario.password);
             usuarioExistente.confirmPassword = Encriptar.EncriptarClave(usuario.confirmPassword);
@@ -83,8 +86,17 @@ namespace Seguridad.Controllers.Seguridad
             usuarioExistente.empresaId = usuario.empresaId;
             usuarioExistente.rolId = usuario.rolId;
 
-            await _context.SaveChangesAsync();
-            return Ok("Usuario actualizado exitosamente.");
+            try
+            {
+                _context.Usuario.Update(usuarioExistente);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+
+                return StatusCode(500, "Error al actualizar el Usuario en la base de datos.");
+            }
+            return Ok();
         }
 
         [HttpDelete("eliminar")]

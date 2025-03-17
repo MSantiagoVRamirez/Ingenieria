@@ -60,6 +60,8 @@ namespace Seguridad.Controllers.Seguridad
                 return NotFound();
             }
             ProyectoExistente.nombre = proyecto.nombre;
+            ProyectoExistente.liderId = proyecto.liderId;
+            ProyectoExistente.descripcion = proyecto.descripcion;
 
             try
             {
@@ -69,7 +71,7 @@ namespace Seguridad.Controllers.Seguridad
             catch (DbUpdateException)
             {
 
-                return StatusCode(500, "Error al actualizar el rol en la base de datos.");
+                return StatusCode(500, "Error al actualizar el proyecto en la base de datos.");
             }
             return Ok();
         }

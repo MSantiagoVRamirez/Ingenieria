@@ -71,7 +71,7 @@ namespace Seguridad.Controllers.Seguridad
             catch (DbUpdateException)
             {
 
-                return StatusCode(500, "Error al actualizar el rol en la base de datos.");
+                return StatusCode(500, "Error al actualizar la empresa en la base de datos.");
             }
             return Ok();
         }
